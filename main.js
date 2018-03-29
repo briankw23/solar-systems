@@ -14,7 +14,7 @@ const printToDom = (domString, divId) => {
     const domString = (planetsArray) =>{
         let domString="";
         for (let i = 0; i < planetsArray.length; i++) {
-            domString += `<div>`;
+            domString += `<div class="cards">`;
             domString += `<div> ${planetsArray[i].name} </div>`;
             domString += `</div>`;
         }
