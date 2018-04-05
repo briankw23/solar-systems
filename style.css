@@ -24,3 +24,6 @@ body{
     border: 5px solid black;
     justify-content: center;
 }
+.anotherclass{
+    background-color: aqua;
+}
