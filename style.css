@@ -27,3 +27,6 @@ body{
 .anotherclass{
     background-color: aqua;
 }
+#i-name{
+    display: none;
+}
