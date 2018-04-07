@@ -1,12 +1,24 @@
 const printToDom = (domString, divId) => {
     document.getElementById(divId).innerHTML = domString;
-    };
-    
-function xhrload() {
+};
+
+
+function xhrload () {
     const data = JSON.parse(this.responseText);
     console.log("data", data);
     domString(data.planets);
     addEventTarget();
+};
+function domPlanetPicData () { 
+    const data = JSON.parse(this.responseText);
+    console.log("data 2", data);
+    domPlanetPic(data.planets);
+};
+
+function domPlanetCardData () {
+    const data = JSON.parse(this.responseText);
+    console.log("data 3", data);
+    domPlanetCard(data.planets);
 };
 
 const domString = (planetsArray) =>{
@@ -26,31 +38,25 @@ function xhrfail(){
 const addEventTarget = () => {
     const eTarget = document.getElementsByClassName("cards");
     for (let i = 0; i < eTarget.length; i++) {
-        eTarget[i].addEventListener("mouseenter", showplanetpic);
-        eTarget[i].addEventListener("mouseout", showplanetname);
+        eTarget[i].addEventListener("mouseenter", domPlanetCard);
+        // eTarget[i].addEventListener("mouseout", domPlanetPic);
     }
 }
-const showplanetpic = (e) => {
+const domPlanetPic = (e) => {
     console.log(e);
-    const hoverplanet = e.target.childNodes[0].textContent; 
-    console.log(hoverplanet);
-    const imgA = document.createElement("img");
-    let imgB = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7lu1ahBRp1tSOKA_Tp0zrufoCOMuWR7C5v7r9S7394JCXXGrv_Q'>";
-    const enterplanet = e.target.childNodes[0].innerHTML = imgB;
+};
+const domPlanetCard = (e) => {
+
 };
 
-const showplanetname = (e) => {
-    const hoverplanet = e.target.childNodes[0].textContent; 
-    console.log(hoverplanet, "mouse out mf");
-}
-
-const startApplication = () => {
+const startApplication = () => {    
     let myRequest = new XMLHttpRequest();
     myRequest.addEventListener("load", xhrload);
+    myRequest.addEventListener("load", domPlanetCardData);
+    myRequest.addEventListener("load", domPlanetPicData);
     myRequest.addEventListener("error", xhrfail);
     myRequest.open("GET", "planets.json");
     myRequest.send();
     console.log("myrequest", myRequest);
 };
-
 startApplication();
