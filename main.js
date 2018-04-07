@@ -1,72 +1,21 @@
 const printToDom = (domString, divId) => {
     document.getElementById(divId).innerHTML = domString;
 };
-
-
-// function xhrload () {
-//     const data = JSON.parse(this.responseText);
-//     console.log("data", data);
-//     domString(data.planets);
-//     addEventTarget();
-// };
-// function domPlanetPicData () { 
-//     const data = JSON.parse(this.responseText);
-//     console.log("data 2", data);
-//     const domPlanetPic = (e) => {
-//         console.log(e);
-//     };
-// };
-
-// function domPlanetCardData () {
-//     const data = JSON.parse(this.responseText);
-//     console.log("data 3", data);
-//     const domPlanetCard = (e) => {
-//         console.log(e);
-//     };
-// };
-
-// const domString = (planetsArray) =>{
-//     let domString="";
-//     for (let i = 0; i < planetsArray.length; i++) {
-//         domString += `<div class="cards" >`;
-//         domString += `<p id="p-name"> ${planetsArray[i].name} </p>`;
-//         domString += `<img id="i-name"src="${planetsArray[i].imageUrl}">`;
-//         domString += `</div>`;
-//     }
-//     printToDom(domString,"main")
-// };
-
-// function xhrfail(){
-//         console.log("fail");
-//     }
 const addEventTarget = () => {
     const eTarget = document.getElementsByClassName("cards");
     for (let i = 0; i < eTarget.length; i++) {
-        eTarget[i].addEventListener("mouseenter", domPlanetCard);
-        eTarget[i].addEventListener("mouseout", domPlanetPic);
+        eTarget[i].addEventListener("mouseenter", domPlanetPic);
+        eTarget[i].addEventListener("mouseout", domPlanetName);
     }
 }
-
-const domPlanetCard = (e) => {
-
+const domPlanetName = (e) => {
+    e.target.childNodes[1].classList.add('hide');
+    e.target.childNodes[0].classList.remove('hide');
 };
-
 const domPlanetPic = (e) => {
-
+    e.target.childNodes[0].classList.add('hide');
+    e.target.childNodes[1].classList.remove('hide');
 };
-
-// const startApplication = () => {    
-//     let myRequest = new XMLHttpRequest();
-//     myRequest.addEventListener("load", xhrload);
-//     myRequest.addEventListener("load", domPlanetCardData);
-//     myRequest.addEventListener("load", domPlanetPicData);
-//     myRequest.addEventListener("error", xhrfail);
-//     myRequest.open("GET", "planets.json");
-//     myRequest.send();
-//     console.log("myrequest", myRequest);
-// };
-// startApplication();
-
 
 function httpI () {
     const http = new XMLHttpRequest();
@@ -75,14 +24,17 @@ function httpI () {
                 const data = JSON.parse(http.responseText);
                 let domString="";
                 for (let i = 0; i < data.planets.length; i++) {        
-                    domString += `<div class="cards" >`;
-                    domString += `<p id="p-name"> ${data.planets[i].name} </p>`;
-                    domString += `<img id="i-name"src="${data.planets[i].imageUrl}">`;
+                    domString += `<div class="cards" data-planetname="${data.planets[i].name}">`;
+                    domString += `<p class="show"> ${data.planets[i].name} </p>`;
+                    domString += `<img class="hide img" src="${data.planets[i].imageUrl}">`;
+                    domString += `<p class="hide">${data.planets[i].description}</p>`;
+                    domString += `<p class="hide">${data.planets[i].isGasey}</p>`;
+                    domString += `<p class="hide">${data.planets[i].numberofmoons}</p>`;
+                    domString += `<p class="hide">${data.planets[i].nameoflargestmoon}</p>`;
                     domString += `</div>`;}
                     printToDom(domString,"main")
                     addEventTarget();
-
-
+// add more events here
             }  
             else {
                 console.log("status", http.status);
@@ -92,7 +44,9 @@ function httpI () {
     http.send();
     console.log(http);
 };
+const startApplication = () => {    
+    httpI();
+};
 
-
-
+startApplication();
 httpI();
