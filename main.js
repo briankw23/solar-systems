@@ -1,7 +1,6 @@
 const printToDom = (domString, divId) => {
     document.getElementById(divId).innerHTML = domString;
 };
-
 const intialplanetBuilder = (data) => {
     let domString="";
     for (let i = 0; i < data.planets.length; i++) {
