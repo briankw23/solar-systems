@@ -10,14 +10,14 @@
     width: 500px;
     height: 400px;
     margin: 10px;
-    color: black;
-    background-color: white;
+    color: lightskyblue;
     font-weight: bold;
     font-size: 3em;
     text-align: center;
     box-sizing: content-box; 
-    border: 5px solid black;
+    border: 5px solid lightskyblue;
     justify-content: center;
+    text-transform: uppercase;
 }
 .cards:hover img {
     display: block;
@@ -31,6 +31,15 @@
     display: none;
     height: 300px;
     width: 300px;
+}
+body{
+    background-image: url('https://www-b.jpl.nasa.gov/spaceimages/images/largesize/PIA17005_hires.jpg');
+}
+h1{
+    text-transform: uppercase;
+    color: lightskyblue;
+    font-size: 6em;
+    text-align: center;
 }
 
 
