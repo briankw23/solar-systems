@@ -20,6 +20,11 @@ const planetClick = (e) => {
         eTarget[i].addEventListener("click", http2);
     }
 };
+const showPlanets = (e) => {
+    const button = document.getElementById("allPlanets");
+        button.addEventListener("click", httpI);
+};
+
 const planetCardBuilder = (data, target) => {
     console.log(data);
     console.log(target);
@@ -33,12 +38,11 @@ const planetCardBuilder = (data, target) => {
             domString2 += `<p class="text">${data.planets[i].isGasey}</p>`;
             domString2 += `<p class="text">${data.planets[i].numberofmoons}</p>`;
             domString2 += `<p class="text">${data.planets[i].nameoflargestmoon}</p>`;
-            domString2 += `<button></button>`;
+            domString2 += `<button type="button" id="allPlanets">Show All Planets</button>`;
             domString2 += `</div>`;
             printToDom(domString2,"main");
+            showPlanets();
         }
-        
-        
     }
 }
 function http2 (e) {
