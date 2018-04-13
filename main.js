@@ -52,6 +52,7 @@ function http3 (e) {
             if (http.readyState == 4 && http.status == 200){
                 const data = JSON.parse(http.responseText);
                 console.log("http3:", data);
+                intialplanetBuilder(data);
                 let searchInput = document.getElementById('input');
                 planetSearchBuilder(data, searchInput.value);
                 console.log(e);
@@ -75,12 +76,13 @@ console.log(target);
 let domString3="";
 
 for (let i = 0; i < data.planets.length; i++) {
-    if(target.toLowerCase() === data.planets[i].name.toLowerCase()){
+    if(target.toLowerCase() === data.planets[i].name.toLowerCase()){  
     domString3 += `<div class="cards">`;
     domString3 += `<p data-set="${data.planets[i].name}">${data.planets[i].name}</p>`;
     domString3 +=`<img class="image" src="${data.planets[i].imageUrl}">`;
     domString3 +=`</div>`;      
     printToDom(domString3,"main");
+    planetClick();
     }
     }
 };
