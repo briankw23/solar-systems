@@ -32,13 +32,16 @@ const planetCardBuilder = (data, target) => {
         if(target === data.planets[i].name){
             let domString2="";
             domString2 += `<div class"large">`;
-            domString2 += `<h2>${data.planets[i].name}</h2>`;
+            domString2 += `<h2 class="text head line">${data.planets[i].name}</h2>`;
+            domString2 += `<button class="line" type="button" id="allPlanets">X</button>`;
+            domString2 +=`<div>`
             domString2 += `<img class="image2" src="${data.planets[i].imageUrl}">`;
+            domString2 +=`</div>`
             domString2 += `<p class="text">${data.planets[i].description}</p>`;
             domString2 += `<p class="text">${data.planets[i].isGasey}</p>`;
             domString2 += `<p class="text">${data.planets[i].numberofmoons}</p>`;
             domString2 += `<p class="text">${data.planets[i].nameoflargestmoon}</p>`;
-            domString2 += `<button type="button" id="allPlanets">Show All Planets</button>`;
+            
             domString2 += `</div>`;
             printToDom(domString2,"main");
             showPlanets();
