@@ -42,11 +42,17 @@ h1{
     text-align: center;
 }
 .image2{
-    height: 500px;
-    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border: 5px solid lightskyblue;
+    
 }
 .text{
-    color: white;
+    color: lightskyblue;
+    font-weight: bold;
+
 }
 .large{
     border: 5px solid lightskyblue;
@@ -54,6 +60,19 @@ h1{
     font-size: 3em;
     margin: 10px;
     padding: 5px;
+}
+.head{
+    text-transform: uppercase;
+    font-size: 4em;
+}
+#allPlanets{
+    float: right;
+    font-size: 3em;
+    color: red;
+    font-weight: bold;
+}
+.line{
+    display: inline;
 }
 
 
