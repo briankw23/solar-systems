@@ -120,6 +120,7 @@ function httpI () {
     http.send();
     console.log(http);
 };
+
 const startApplication = () => {    
     httpI();
     planetClick();
